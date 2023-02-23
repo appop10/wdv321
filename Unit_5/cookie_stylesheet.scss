@@ -1,0 +1,116 @@
+/* 
+    SCSS stylesheet for Assignment 4-1
+    Author: Abby Poplawski
+    Created: 2/13/2023
+*/
+// SCSS rules and variables
+$primary-color: #fcac5c;
+$accent-1: #9a938e;
+$accent-2: #646464;
+$white: #fff;
+$black: #000;
+$standard-px: 25px;
+$standard-height: 800px;
+
+@mixin story-settings {
+    padding: $standard-px 45px 0 45px;
+    color: $accent-2;
+}
+
+// CSS rules
+body {
+    background-color: #ede4dd;
+    font-family: 'Varela Round', tahoma, arial, sans-serif;;
+}
+.container {
+    background-color: $white;
+    border: 1px solid $black;
+    border-radius: 3px;
+    width: 1200px;
+    height: $standard-height;
+    margin: $standard-px auto;
+}
+// nav rules
+nav {
+    background-color: $accent-1;
+    float: left;
+    width: 200px;
+    height: $standard-height;
+
+    img {
+        padding: $standard-px;
+    }
+    a {
+        display: block;
+        padding: $standard-px 35px;
+        text-decoration: none;
+        font-size: 1.15em;
+        color: $white;
+    }
+    a:hover {
+        background-color: $accent-2;
+    }
+}
+// aside rules
+aside {
+    background-color: $primary-color;
+    float: right;
+    width: 200px;
+    height: $standard-height;
+
+    h3 {
+        padding: 150px $standard-px 0px 35px;
+        line-height: 1.3em;
+    }
+    p {
+        font-size: 1.3em;
+        text-align: center;
+    }
+}
+// main rules
+main {
+    margin: 0;
+    padding: $standard-px;
+    overflow: auto;
+
+    h1 {
+        margin: 0;
+        padding: $standard-px 0 15px 35px;
+        border: 3px solid $primary-color;
+        border-style: none none solid none;
+        color: #2d2d2d;
+        font-size: 2.5em;
+    }
+    img[alt~="sleeping"] {
+        float: right;
+        margin: 110px 35px 0 35px;
+        border-radius: 10px;
+    }
+    img[alt~="sitting"], img[alt~="staring"] {
+        float: right;
+        margin: 15px 35px 0 35px;
+        border-radius: 10px;
+    }
+    h3 {
+        @include story-settings();
+        font-size: 1.5em;
+    }
+    p {
+        @include story-settings();
+        font-size: 1.2em;
+        line-height: 1.35em;
+    }
+}
+// button rules
+button {
+    margin-left: 45px;
+    padding: 15px;
+    border: 2px solid $accent-2;
+    border-radius: 3px;
+    font-size: 1.3em;
+    background-color: $primary-color;
+    background-image: linear-gradient(#64646400, #64646429);
+}
+button:hover {
+    background-color: #eaa055;
+}
