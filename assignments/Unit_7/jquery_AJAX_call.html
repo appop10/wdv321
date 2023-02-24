@@ -28,10 +28,7 @@
                         success: function(result) {
                         let newResult = formatJSON(result);
                         $("#objectDiv").append("<div class='studentTag'>" + newResult + "</div>");
-                        },
-                        error: function(xhr) {
-                            $("#objectDiv").html(xhr.statusText);
-                        }});
+                    }});
                 }
             });
 
