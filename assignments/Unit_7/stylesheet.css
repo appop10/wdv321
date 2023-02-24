@@ -1,0 +1,67 @@
+/* 
+    Stylesheet for Unit 7 assignments
+    Author: Abby Poplawski
+    Created: 2/24/2023
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: lightgrey;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+    width: 65%;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 30px auto;
+    padding: 50px;
+}
+h2 {
+    margin: 0.5em 0;
+}
+button, p {
+    font-size: 1.1em;
+}
+button {
+    margin: 2em 0;
+    padding: 1em 1.5em;
+    background-color: lightblue;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+button:hover {
+    background-color: rgb(148, 191, 204);
+}
+.studentTag {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 1.2em auto;
+    width: 65%;
+}
+.studentTag h3 {
+    border: 1px solid black;
+    border-style: none none solid none;
+    padding: 0.5em;
+    padding-left: 0.7em;
+    background-color: lightblue;
+}
+.studentTag > section {
+    display: flex;
+}
+.studentTag > section div {
+    border: 1px solid black;
+    border-style: solid none solid none;
+    flex-grow: 1;
+}
+div p {
+    border: 1px solid black;
+    border-style: none none solid none;
+    padding: 0.2em;
+    padding-left: 0.7em;
+}

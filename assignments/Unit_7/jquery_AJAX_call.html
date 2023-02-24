@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unit 7 Assignment 1 AJAX consume JSON objects">
+    <meta name="author" content="Abby Poplawski">
+    <title>Assignment 7-1</title>
+
+    <!-- external file links -->
+    <link rel="stylesheet" href="stylesheet.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        // store links in an array
+        let linkLocations = ["AJAX_pages/900006361.json", "AJAX_pages/900668871.json", "AJAX_pages/903998004.json"]
+
+        // button events
+        $(document).ready(function() {
+
+            $("button").click(function() {
+                $("#objectDiv").html("");
+
+                for (x=0; x<linkLocations.length; x++) {
+                    $.ajax({url: linkLocations[x], 
+                        success: function(result) {
+                        let newResult = formatJSON(result);
+                        $("#objectDiv").append("<div class='studentTag'>" + newResult + "</div>");
+                        },
+                        error: function(xhr) {
+                            $("#objectDiv").html(xhr.statusText);
+                        }});
+                }
+            });
+
+        });
+
+        // make the JSON objects dispaly on the page
+        function formatJSON(result) {
+            let studentName = "<h3>" + result.student_first_name + " " + result.student_last_name + "</h3>";
+            let studentInfo = 
+                "<div><p>" + result.student_id + "</p>" + "<p>" + result.student_major + "</p>" + "<p>" + result.student_credits + "</p>" + "<p>" + result.student_gpa + "</p>" + "<p>" + result.student_registration_date + "</p></div>";
+            let studentLabels = 
+                "<div><p>ID</p>" + "<p>Major</p>" + "<p>Credits</p>" + "<p>GPA</p>" + "<p>Registration Date</p></div>";
+            
+
+            return studentName + "<section>" + studentLabels + studentInfo + "</section>";
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>WDV 321 - Advanced JavaScript</h1>
+        <h2>Unit 7 Assignment 1 AJAX Consume JSON Objects</h2>
+
+        <button>Display JSON Objects</button>
+
+        <div id="objectDiv">
+            <div class="studentTag"> 
+                <h3>Example Tag</h3>
+                <section>
+                    <div>
+                        <p>ID</p>
+                        <p>Major</p>
+                        <p>Credits</p>
+                        <p>GPA</p>
+                        <p>Registration Date</p>
+                    </div>
+                    <div>
+                        <p>123456789</p>
+                        <p>CIS</p>
+                        <p>18</p>
+                        <p>3.5</p>
+                        <p>2020-08-10</p>
+                    </div>
+                </section>
+            </div><!-- close studentTag -->
+        </div><!-- close objectDiv -->
+    </div><!-- close cotainer div -->
+</body>
+</html>
