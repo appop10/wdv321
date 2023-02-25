@@ -11,9 +11,40 @@
     <!-- external file links -->
     <link rel="stylesheet" href="stylesheet.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <script>
         // store links in an array
-        let linkLocations = ["AJAX_pages/900006361.json", "AJAX_pages/900668871.json", "AJAX_pages/903998004.json"]
+        let linkLocations = ["AJAX_pages/900006361.json", "AJAX_pages/900668871.json", "AJAX_pages/903998004.json"];
+
+        // button events
+        $(document).ready(function() {
+
+            $("button").click(function() {
+                $("#objectDiv").html("");
+
+                for(x=0; x<linkLocations.length; x++) {
+                    fetch(linkLocations[x]).then(response => response.json()).then(data => $("#objectDiv").append("<div class='studentTag'>" + formatJSON(data) + "</div>"));
+                }
+            });
+
+        });
+
+        // make the JSON objects dispaly on the page
+        function formatJSON(result) {
+            /*
+                localhost had problems when parsing - doesn't need to parse to get the correct information, but the hosting account needs to parse for it to work
+            */
+            //let parsedResult = JSON.parse(result);
+            let studentName = "<h3>" + result.student_first_name + " " + result.student_last_name + "</h3>";
+            let studentInfo = 
+                "<div><p>" + result.student_id + "</p>" + "<p>" + result.student_major + "</p>" + "<p>" + result.student_credits + "</p>" + "<p>" + result.student_gpa + "</p>" + "<p>" + result.student_registration_date + "</p></div>";
+            let studentLabels = 
+                "<div><p>ID</p>" + "<p>Major</p>" + "<p>Credits</p>" + "<p>GPA</p>" + "<p>Registration Date</p></div>";
+            
+
+            return studentName + "<section>" + studentLabels + studentInfo + "</section>";
+        }
     </script>
 </head>
 <body>
