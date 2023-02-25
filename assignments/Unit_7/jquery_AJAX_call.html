@@ -37,7 +37,7 @@
         // make the JSON objects dispaly on the page
         function formatJSON(result) {
             /*
-                local host doesn't need to parse JSON, but the hosting account does for it to work
+                localhost had problems when parsing - doesn't need to parse to get the correct information, but the hosting account needs to parse for it to work
             */
             //let parsedResult = JSON.parse(result);
             let studentName = "<h3>" + result.student_first_name + " " + result.student_last_name + "</h3>";
