@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assignment 4-2 Create JSON Objects">
+    <meta name="author" content="Abby Poplawski">
+    <title>Assignment 4-2</title>
+    <script src="bookObjects.js"></script>
+    <script>
+        // show the JavaScript Objects in the console
+        console.log("JavaScript Objects: ");
+        console.log(jsJavaBook);
+        console.log(jsVBBook);
+        console.log(jsTextbooks);
+
+        // convert the JS Objects to JSON Objects
+        let JavaBook = JSON.stringify(jsJavaBook);
+        let VB6Book = JSON.stringify(jsVBBook);
+        let textbooks = JSON.stringify(jsTextbooks);
+
+        // show the JSON Objects in the console
+        console.log("JSON Objects: ")
+        console.log(JavaBook);
+        console.log(VB6Book);
+        console.log(textbooks);
+    </script>
+    <style>
+        body {
+            background-color: lightgrey;
+        }
+        .container {
+            background-color: white;
+            width: fit-content;
+            border: 1px solid black;
+            border-radius: 5px;
+            padding: 50px;
+            margin: 30px auto;
+        }
+        p {
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WDV 321 - Advanced JavaScript</h1>
+        <h2>Assignment 4-2 Create JSON Objects</h2>
+
+        <p>The JavaScript Objects are printed in the console and then the JSON Objects are printed below them.</p>
+    </div><!-- close container div -->
+</body>
+</html>

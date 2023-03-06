@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Dynamic structure assignment">
+	<meta name="author" content="Abby Poplawski"> 
+	<title>WDV321 Advanced Javascript</title>
+	<style>
+		body {
+			background-color: lightgrey;
+		}
+		.container {
+			width: 80%;
+			margin: 30px auto;
+			padding: 50px;
+			border: 1px solid black;
+			border-radius: 10px;
+			background-color: white;
+		}
+		section {
+			border: 2px dashed green;
+			border-radius: 10px;
+			padding: 35px;
+			font-size: 1.3em;
+		}
+		select {
+			font-size: 0.75em;
+		}
+		div[id] {
+			display: none;
+		}
+	</style>
+	<script>
+		// displays the appropriate div based on the first select
+		function displayDiv() {
+			switch (document.querySelector("#contactType").value) {
+				case "C":
+					document.querySelector("#listIssues").style.display = "block";
+					document.querySelector("#technicalIssues").style.display = "none";
+					document.querySelector("#productIssues").style.display = "none";
+					break;
+				case "T":
+					document.querySelector("#technicalIssues").style.display = "block";
+					document.querySelector("#listIssues").style.display = "none";
+					document.querySelector("#productIssues").style.display = "none";
+					break;
+				case "P": 
+					document.querySelector("#productIssues").style.display = "block";
+					document.querySelector("#listIssues").style.display = "none";
+					document.querySelector("#technicalIssues").style.display = "none";
+					break;
+				default : 
+					document.querySelector("#productIssues").style.display = "none";
+					document.querySelector("#listIssues").style.display = "none";
+					document.querySelector("#technicalIssues").style.display = "none";
+					break;
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>WDV321 Advanced Javascript</h1>
+		<h2>Dynamic Structure - Assignment</h2>
+
+		<p>Use this page as the basis for your assignment. Given the drop down list provided on this page please do the following things.</p>
+
+		<section>
+			<p>
+				<label>Reason For Contact:
+				<select name="contactType" id="contactType" onchange="displayDiv()">
+					<option value="">Please select an option</option>
+					<option value="C">Complaints</option>
+					<option value="T">Technical Problems</option>
+					<option value="P">Product Issues</option>
+				</select>
+				</label>
+		</p>
+		
+		<div id="listIssues">
+			<label for="complaintDescription">Reason for complaint</label>
+			<select name="complaintDescription" id="complaintDescription">
+				<option value="">Please select an option</option>
+				<option value="broken/defective">Product is broken/defective</option>
+				<option value="expectations">Product doesn't meet expectations</option>
+				<option value="payment">Preferred payment not accepted</option>
+				<option value="refund">Did not receive refund</option>
+			</select>
+		</div><!-- close listIssues div -->
+		
+		<div id="technicalIssues">
+			<p>Please select the technical issue:</p>
+		
+			<p>
+				<input type="checkbox" name="start" id="start" value="no start">
+				<label for="start">Product won't turn on</label>
+			</p>
+		
+			<p>
+				<input type="checkbox" name="power" id="power" value="no power">
+				<label for="power">Product starts, but does not run</label>
+			</p>
+		
+			<p>
+				<input type="checkbox" name="parts" id="parts" value="missing parts">
+				<label for="parts">Product is missing parts</label>
+			</p>
+		
+			<p>
+				<input type="checkbox" name="brokenParts" id="brokenParts" value="broken parts">
+				<label for="brokenParts">Product has broken parts</label>
+			</p>
+		</div><!-- close technicalIssues div -->
+		
+		<div id="productIssues">
+			<p>Please select a product issue:</p>
+		
+			<p>
+				<input type="radio" name="issueList" id="quality" value="quality">
+				<label for="quality">Poor quality</label>
+			</p>
+		
+			<p>
+				<input type="radio" name="issueList" id="damage" value="damage">
+				<label for="damage">Damage after normal use</label>
+			</p>
+		
+			<p>
+				<input type="radio" name="issueList" id="delivery" value="delivery">
+				<label for="delivery">Delivery issues</label>
+			</p>
+		
+			<p>
+				<input type="radio" name="issueList" id="unsafe" value="unsafe">
+				<label for="unsafe">Safety concerns not as advertised</label>
+			</p>
+		</div><!-- close productIssues div -->
+		</section><!-- close section -->
+
+		<p>Create the content areas on the page.</p>
+
+		<ol>
+		<li>Create a div that contains a new drop down list with at least four common Complaints to a company. </li>
+		<li>Create a div that contains four Technical Problems displayed as a  set of checkboxes. </li>
+		<li>Create a div that contains four Product Issues displayed as a set of radio buttons.</li>
+		<li>Use the display property to remove these content containers from the page.</li>
+		</ol>
+
+		<p>Based on the selection from the &quot;Reason For Contact&quot; dynamically display the requested set of followup questions on the page using the display property.</p>
+
+		<p>You are welcome to change the content, layout and style of this page as desired.</p>
+
+		<p>&nbsp;</p>
+	</div><!-- close container div -->
+</body>
+</html>

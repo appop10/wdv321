@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Unit 1 assignment JavaScript Review">
+    <meta name="author" content="Abby Poplawski">
+    <title>WDV321 Advanced JavaScript - Unit-1</title>
+    <style>
+        body {
+            background-color: brown;
+        }
+
+        #container {
+            width:900px;
+            margin-left:auto;
+            margin-right:auto;
+            background-color: antiquewhite;
+
+        }
+
+        header {
+            border-bottom:thick solid brown;
+            text-align: center;
+        }
+
+        main {
+            padding-left:5px;
+        }
+
+        footer p {
+            text-align: center;
+        }
+    </style>
+    <script>
+        // Global variables
+        let personObject = {
+            userName: "Mary",
+            fontColor: "black",
+            bgColor: "green"
+        };
+
+        let colors = ["red", "blue", "green", "yellow", "white"];
+        let theDate = new Date();
+
+        // function that checks if the bgColor from the JavaScript Object is the same as the one chosen in the select menu
+        function checkBgColor() {
+            let color1 = document.querySelector("#colorSelect").value;
+            let color2 = personObject.bgColor;
+            let matching = true;
+
+            if (color1 != color2) {
+                matching = false;
+            }
+
+            return matching;
+        }
+
+        // function that runs the event handlers
+        function runEvents() {
+            document.querySelector("#colorSelect").onchange = function() {
+                let sameColor = checkBgColor();
+                let colorOption = document.querySelector("#colorSelect").value;
+
+                if (sameColor) {
+                    alert("Same color detected. Please choose a different color.");
+                } else {
+                    document.querySelector("body").style.backgroundColor = colorOption;
+                    personObject.bgColor = colorOption;
+                }
+            }
+
+            document.querySelector("#objectInfo").onclick = function() {
+                console.log(personObject);
+            }
+        }
+    </script>
+</head>
+<body onload="runEvents()">
+    <div id="container">
+
+        <header>
+            <h1>WDV321 Advanced JavaScript</h1>
+            <h2>Unit-1 Assignment Review JavaScript</h2>
+        </header>
+
+        <main>
+            <h2>Welcome back <script>document.write(personObject.userName)</script></h2>
+            <h3>Please Set Your Preferences</h3>
+
+            <p>
+                Choose your background color
+                <select id="colorSelect">
+                    <option value="">Please choose a color</option>
+                    <script>
+                        for (x=0; x<colors.length; x++) {
+                            document.write("<option value='" + colors[x] + "'>" + colors[x] + "</option>");
+                        }
+                    </script>
+                </select>
+            </p>
+
+            <p>
+                <button id="objectInfo">Display Preferences</button>
+            </p>
+        </main>
+
+        <footer>
+            <p>Copyright &copy;<script>document.write(theDate.getFullYear())</script> All rights reserved</p>
+        </footer>
+
+    </div>
+</body>
+</html>

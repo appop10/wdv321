@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Unit 2 Assignment dynamic drop down form">
+  <meta name="author" content="Abby Poplawski">
+  <title>WDV321 Advanced Javascript Dynamic Form Example</title>
+  <style>
+    body {
+      background-color: lightgrey;
+    }
+    .container {
+      width: fit-content;
+      margin: 30px auto;
+      padding: 50px;
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: white;
+    }
+  </style>
+
+  <script>
+
+  var productsArray = new Array("Pen","Paper","Pencil");
+
+  var colorsArray = new Array("Red","Yellow","Green");
+
+  // function to load the event handlers to the page
+  function pageLoad() {
+    document.querySelector("#addProducts").onchange = function() {
+      console.log("products button selected");
+      removeColorList();
+      createProductList();
+    }
+
+    document.querySelector("#addColors").onchange = function() {
+      console.log("colors button selected");
+      removeProductList();
+      createColorList();
+    }
+  }
+
+  // create the colors drop down list
+  function createColorList() {
+    // create the default option first
+    let defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "Please select an option";
+    document.querySelector("#displayItems").add(defaultOption);
+
+    // create the rest of the drop down
+    for (x=0; x<colorsArray.length; x++) {
+      let newOption = document.createElement("option");
+      newOption.value = colorsArray[x];
+      newOption.text = colorsArray[x];
+      document.querySelector("#displayItems").add(newOption);
+    }
+  }
+
+  // create the products drop down list
+  function createProductList() {
+    // create the default option first
+    let defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "Please select an option";
+    document.querySelector("#displayItems").add(defaultOption);
+
+    // create the rest of the drop down
+    for (x=0; x<productsArray.length; x++) {
+      let newOption = document.createElement("option");
+      newOption.value = productsArray[x];
+      newOption.text = productsArray[x];
+      document.querySelector("#displayItems").add(newOption);
+    }
+  }
+
+  // remove the color list
+  function removeColorList() {
+    for (x=0; x<colorsArray.length +1; x++) {
+      let dropDown = document.querySelector("#displayItems");
+
+      dropDown.remove(colorsArray[x]);
+    }
+  }
+
+  // remove the product list
+  function removeProductList() {
+    for (x=0; x<productsArray.length +1; x++) {
+      let dropDown = document.querySelector("#displayItems");
+
+      dropDown.remove(productsArray[x]);
+    }
+  }
+  </script>
+
+</head>
+
+<body onload="pageLoad()">
+  <div class="container">
+    <h1>WDV321 Advanced Javascript</h1>
+    <h3>Dynamic Form Example</h3>
+
+    <!-- Radio buttons -->
+    <p>
+      Add Products
+      <input type="radio" name="radio" id="addProducts" value="addProducts"/>
+    </p>
+    <p>
+      Add Colors 
+      <input type="radio" name="radio" id="addColors" value="addColors"/>
+    </p>
+
+    <!-- Dynamic drop down -->
+    <p>Result Drop Down Box</p>
+    <p>
+      <select name="displayItems" id="displayItems">
+        <option value="">Please select an option</option>
+        <script>
+
+        for(i=0; i<productsArray.length; i++) {
+          document.write("<option>" + productsArray[i] + "</option>" );
+        }  
+        
+        </script>
+      </select>
+    </p>
+
+    <!-- Example drop downs -->
+    <p>&nbsp;</p>
+    <p>Example Drop Down Lists</p>
+
+    <p>
+      <select name="example2" id="exampleProducts">
+        <option value="bright red">Red</option>
+        <option value="gold">Yellow</option>
+        <option value="sea green">Green</option>
+      </select>
+    </p>
+    <p>
+      <select name="example1" id="exampleColors">
+        <option value="Bic Roller">Pen</option>
+        <option value="500ct 90">Paper</option>
+        <option value="No. 2 Lead">Pencil</option>
+      </select>
+    </p>
+  </div><!-- close container div -->
+</body>
+</html>
