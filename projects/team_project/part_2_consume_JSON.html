@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WDV321 Advanced JavaScript - JSON</title>
+
+    <link rel="stylesheet" href="team_project_stylesheet.css">
+
+    <!-- JavaScript links -->
+    <script src="part_1_createJSON.js"></script>
+    <script src="createJSONArray.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+    <script>
+        // get objects from local storage
+        let stdnt1 = localStorage.getItem("student_1");
+        let stdnt2 = localStorage.getItem("student_2");
+        let stdnt3 = localStorage.getItem("student_3");
+        let localStorageObject = localStorage.getItem("student_information");
+        // parse objects
+        let stdnt1_JSObject = JSON.parse(stdnt1);
+        let stdnt2_JSObject = JSON.parse(stdnt2);
+        let stdnt3_JSObject = JSON.parse(stdnt3);
+        let JSObject = JSON.parse(localStorageObject);
+
+        $(document).ready(function() {
+            /** Display Single Objects button **/
+            $("#button1").click(function() {
+                hideExample();
+
+                let title = document.createElement("h2");
+                title.setAttribute("class", "title");
+                title.innerHTML = "Single Objects";
+
+                let newDiv1 = formatStudentInfo(stdnt1_JSObject.student_id, stdnt1_JSObject.student_gpa, stdnt1_JSObject.student_courses);
+                let newDiv2 = formatStudentInfo(stdnt2_JSObject.student_id, stdnt2_JSObject.student_gpa, stdnt2_JSObject.student_courses);
+                let newDiv3 = formatStudentInfo(stdnt3_JSObject.student_id, stdnt3_JSObject.student_gpa, stdnt3_JSObject.student_courses);
+
+                let studentTable = document.createElement("div");
+                studentTable.setAttribute("class", "studentTable");
+                studentTable.appendChild(newDiv1);
+                studentTable.appendChild(newDiv2);
+                studentTable.appendChild(newDiv3);
+
+                $(".container").append(title, studentTable);
+                $("#button1").css("display", "none");
+            });
+            /** Display Objects from Array button **/
+            $("#button2").click(function() {
+                hideExample();
+
+                let studentTable = document.createElement("div");
+                studentTable.setAttribute("class", "studentTable");
+                let title = document.createElement("h2");
+                title.setAttribute("class", "title");
+                title.innerHTML = "Array Objects";
+
+                for (x=0; x<JSObject.length; x++) {
+                    let studentID = JSObject[x].student_id;
+                    let studentGPA = JSObject[x].student_gpa;
+                    let studentCourses = JSObject[x].student_courses;
+
+                    let newDiv = formatStudentInfo(studentID, studentGPA, studentCourses);
+
+                    studentTable.appendChild(newDiv);
+                }
+
+                $(".container").append(title, studentTable);
+                $("#button2").css("display", "none");
+            });
+        });
+
+        /** functions **/
+        // hides the example div if it isn't already hidden
+        function hideExample() {
+            let divShowing = document.querySelector("#exampleCard").style.display;
+
+            if (divShowing != "none") {
+                $("#exampleCard").css("display", "none");
+            }
+        }
+        // formats student info into the student card
+        function formatStudentInfo(inID, inGPA, inCourses) {
+            let line1 = document.createElement("h3");
+            line1.innerHTML = "Student ID: " + inID;
+            let line2 = document.createElement("p");
+            line2.innerHTML = "Student GPA: " + inGPA;
+            let line3 = document.createElement("p");
+            line3.innerHTML = "Student Courses: ";
+            let courseList = document.createElement("ul");
+
+            for (y = 0; y < inCourses.length; y++) {
+                courseName = document.createElement("li");
+                courseName.innerHTML = inCourses[y];
+
+                courseList.appendChild(courseName);
+            }
+
+            let newDiv = document.createElement("div");
+            newDiv.setAttribute("class", "studentCard");
+            newDiv.appendChild(line1);
+            newDiv.appendChild(line2);
+            newDiv.appendChild(line3);
+            newDiv.appendChild(courseList);
+
+            return newDiv;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>WDV321 Advanced JavaScript</h1>
+        <h2>Unit-8 JSON Objects</h2>
+        <h3>Creating and consuming a JSON object</h3>
+        
+        <button id="button1">Display Single Objects</button>
+        <button id="button2">Display Objects from Array</button>
+        
+        <div class="studentCard" id="exampleCard">
+            <h3>Student ID: </h3>
+            <p>Student GPA: </p>
+            <p>Student Courses: </p>
+            <ul>
+                <!-- display the courses as list items -->
+            </ul>
+        </div>
+    </div><!-- close container div -->
+</body>
+</html>

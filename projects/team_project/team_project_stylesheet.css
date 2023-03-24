@@ -1,0 +1,68 @@
+/*
+    Stylesheet for team project files
+    Author: Abby Poplawski
+    Created: 3/23/2023
+*/
+* {
+    padding: 0;
+    margin: 0;
+    border: none;
+    box-sizing: border-box;
+}
+body {
+    color: rgb(13, 13, 99);
+    background-color: lightgrey;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+.container {
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    box-shadow: 0 0 5px darkgray;
+    background-color: rgba(255, 255, 255, 0.848);
+    width: 90%;
+    margin: 80px auto;
+    padding: 50px 35px;
+}
+h2 {
+    margin: 10px 0;
+}
+h3 {
+    margin-bottom: 50px;
+}
+button {
+    color: rgb(13, 13, 99);
+    border: 1px solid darkgray;
+    border-radius: 3px;
+    box-shadow: 0 0 2px darkgray;
+    padding: 15px;
+    margin: 0 25px 25px 0;
+    background-image: linear-gradient(rgb(237, 237, 237), rgb(199, 199, 199));
+    font-size: 1.1em;
+}
+button:hover {
+    background-image: linear-gradient(lightgrey, darkgray);
+}
+.title {
+    border: 1px solid darkblue;
+    border-style: none none solid none;
+}
+.studentTable {
+    display: flex;
+    justify-content: space-evenly; 
+}
+.studentCard {
+    background-color: rgba(173, 216, 230, 0.705);
+    border-radius: 3px;
+    padding: 25px;
+    margin: 25px 0;
+    width: 30%;
+}
+.studentCard h3, .studentCard p {
+    margin: 5px;
+}
+.studentCard ul {
+    margin: 5px 30px;
+}
+.studentCard li {
+    line-height: 1.5em;
+}
